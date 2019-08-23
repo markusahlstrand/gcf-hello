@@ -1,0 +1,36 @@
+service: gcf-hello # NOTE: Don't put the word "google" in here
+
+provider:
+  name: google
+  runtime: nodejs8
+  project: hello
+  region: europe-west1
+  # the path to the credentials file needs to be absolute
+  credentials: /Users/markus/.gcloud/ahlstrand-es-b7c122f76207.json
+
+plugins:
+  - serverless-google-cloudfunctions
+
+# needs more granular excluding in production as only the serverless provider npm
+# package should be excluded (and not the whole node_modules directory)
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+
+functions:
+  app:
+    handler: hello
+    environment:
+      RUNNER: "google-functions"
+    events:
+      - http: path
+# you can define resources, templates etc. the same way you would in a
+# Google Cloud deployment configuration
+#resources:
+#  resources:
+#    - type: storage.v1.bucket
+#      name: my-serverless-service-bucket
+#  imports:
+#    - path: my_template.jinja

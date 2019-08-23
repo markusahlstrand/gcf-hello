@@ -11,6 +11,10 @@ function create(app) {
     };
   });
 
+  router.get("/(.*)", ctx => {
+    ctx.body = JSON.stringify(ctx);
+  });
+
   app.use(router.routes()).use(router.allowedMethods());
 }
 

@@ -1,4 +1,4 @@
-const packageJson = require("../package.json");
+const packageJson = require("../../package.json");
 const Router = require("koa-router");
 
 function create(app) {
@@ -11,10 +11,9 @@ function create(app) {
     };
   });
 
-  router.get("/(.*)", ctx => {
-    ctx.body = JSON.stringify(ctx);
+  router.post("/hook", ctx => {
+    ctx.body = ctx.request.body;
   });
-
   app.use(router.routes()).use(router.allowedMethods());
 }
 

@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json.schemastore.org/install",
+  "resources": {},
+  "dns": [],
+  "preview": {
+    "handlers": []
+  },
+  "hooks": [],
+  "options": {
+    "properties": {
+      "handlers": {
+        "title": "Handlers",
+        "type": "array",
+        "maxItems": 10,
+        "order": 2,
+        "items": {
+          "type": "object",
+          "title": "Rule",
+          "properties": {
+            "handler": {
+              "title": "Handler",
+              "type": "string",
+              "order": 1,
+              "enum": ["logger", "ratelimit", "loadBalander", "origin", "cors"]
+            },
+            "filters": {
+              "type": "array",
+              "maxItems": 4,
+              "order": 2,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "title": "Type",
+                    "type": "string",
+                    "order": 1,
+                    "enum": ["hostname", "path", "method"]
+                  },
+                  "filter": {
+                    "title": "Filter",
+                    "type": "string",
+                    "order": 2,
+                    "default": ".*"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

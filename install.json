@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json.schemastore.org/install",
+  "resources": {},
+  "dns": [],
+  "preview": {
+    "hide": true
+  },
+  "hooks": [
+    {
+      "endpoint": "https://cloudflare-app.cloudproxy.io/hook",
+      "events": ["new-install", "option-change"],
+      "block": true,
+      "failure": {
+        "action": "notify",
+        "message": "There was an error communicating with Acme."
+      }
+    }
+  ],
+  "options": {
+    "properties": {
+      "handlers": {
+        "title": "Handlers",
+        "type": "array",
+        "maxItems": 10,
+        "order": 2,
+        "items": {
+          "type": "object",
+          "title": "Rule",
+          "properties": {
+            "handler": {
+              "title": "Handler",
+              "type": "string",
+              "order": 1,
+              "enum": [
+                "apiKey",
+                "apiKeyApi",
+                "cors",
+                "basicAuth",
+                "jwt",
+                "lambda",
+                "loadBalancer",
+                "logger",
+                "oauth2",
+                "origin",
+                "rateLimit",
+                "response",
+                "split",
+                "transform"
+              ]
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "order": 2
+            }
+          }
+        }
+      }
+    }
+  }
+}

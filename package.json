@@ -20,7 +20,7 @@
     "mocha": "6.2.2",
     "serverless-dotenv-plugin": "2.1.1",
     "serverless-google-cloudfunctions": "2.3.3",
-    "serverless-offline": "5.12.0"
+    "serverless-offline": "12.0.3"
   },
   "dependencies": {
     "chai": "4.2.0",
